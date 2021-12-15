@@ -1,18 +1,18 @@
 declare module "@cubejs-client/core" {
 
-  export type Measure = import('./generated').Measure;
-  export type Dimension = import('./generated').Dimension;
-  export type TimeDimension = import('./generated').TimeDimension;
-  export type Segment = import('./generated').Segment;
-  export type Member = Measure | Dimension;
+  export type IntrospectedMeasure = import('./generated').IntrospectedMeasure;
+  export type IntrospectedDimension = import('./generated').IntrospectedDimension;
+  export type IntrospectedTimeDimension = import('./generated').IntrospectedTimeDimension;
+  export type IntrospectedSegment = import('./generated').IntrospectedSegment;
+  export type Member = IntrospectedMeasure | IntrospectedDimension;
 
   export type UQueryOrderObject = Record<Member, QueryOrder>;
   export type UQueryOrderArray = Array<[Member, QueryOrder]>;
 
   export interface Query {
-    measures: Measure[];
-    dimensions: Dimension[];
-    segments: Segment[];
+    measures: IntrospectedMeasure[];
+    dimensions: IntrospectedDimension[];
+    segments: IntrospectedSegment[];
     order?: UQueryOrderObject | UQueryOrderArray;
   }
 
@@ -21,7 +21,7 @@ declare module "@cubejs-client/core" {
   }
 
   export interface TimeDimensionBase {
-    dimension: TimeDimension;
+    dimension: IntrospectedTimeDimension;
   }
 
   export interface BinaryFilter {
